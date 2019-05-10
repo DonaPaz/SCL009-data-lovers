@@ -21,7 +21,7 @@ Pokedex (de Kanto) es una webapp que facilita a los jugadores de Pokemon Go, la 
 * ¿Quiénes son los principales usuarios de producto?  
 Jugadores de Pokemon Go principiantes o que requieran información de forma rápida y sencilla acerca de su Pokemon favorito.
 
-* ¿Cuáles son los objetivos de estos usuarios en relación con el producto?  
+* ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
 Obtener información de Pokemones filtrando la información por tipo, buscando por un nombre específico  
 
 * ¿Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué?  
@@ -112,7 +112,7 @@ Este prototipo fue testeado y generó las siguientes observaciones de usabilidad
 
 De lo anterior rescatamos la sugerencia de achicar la ventana del pop-up que contiene la información detallada del Pokemon.
 
-Una vez obtenido el prototipo final, este fue exportado a la aplicación Zeplin que puedes [ver aquí.](zpl.io/a7W1vBE)
+Una vez obtenido el prototipo final, este fue exportado a la aplicación Zeplin que puedes [ver aquí.](https://zpl.io/scene/25J7p8Q)
   
 
 
@@ -129,7 +129,7 @@ __- Una búsqueda avanzada:__ Mediante un menú desplegable, el usuario accede a
 
 Las Cards muestran, inicialemente, la data completa, esta puede ser modificada según las funciones especificadas en las historias de usuario. 
 
-El resultado final de la implementación lo puedes ver en nuestro repositorio de GitHub Page [aquí.](https://scene.zeplin.io/project/5cd42fa61ae7fe3478b64eb9)  
+El resultado final de la implementación lo puedes ver en nuestro repositorio de GitHub Page [aquí.](https://donapaz.github.io/SCL009-data-lovers/src/index.html)  
 
 ***
 
