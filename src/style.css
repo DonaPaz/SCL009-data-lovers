@@ -130,14 +130,12 @@ body{
 #nav-footer{
     z-index:1; 
     flex: 0 0 auto;
-   -webkit-flex: 0 0 auto;
-}
-
-#nav-footer {
-    z-index:1; 
+    -webkit-flex: 0 0 auto;
     background-color: #3a3f46;
     color: white;
 }
+
+
 
 #nav-footer .row {
     z-index:1; 

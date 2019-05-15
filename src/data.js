@@ -29,8 +29,6 @@ function sortById(a,b) {
   }
     return -1;
 }
-
-  
 window.sortData= sortData;
 
 
@@ -39,31 +37,25 @@ const filterName = (pokeData, pokeSearch) =>{
   const pokeName = pokeData.find(element => element.name === pokeSearch);
   
   return pokeName
-  }
-
-
+}
 window.filterName= filterName;
 
-//  FILTRAR POR TIPO
 
+//  FILTRAR POR TIPO
 const filterType = (pokeData,typeResult) =>{
   const pokeType = pokeData.filter(element => element.type.includes(typeResult));
   
   return pokeType
-
 }
-
-
-  window.filterType= filterType;
+window.filterType= filterType;
 
 
 //CALCULAR CANTIDAD DE POKEMON SEGUN TIPO
 const computeStats = (data) =>{
   
-  
   return data.length
-
 }
+
 window.computeStats = computeStats;
 
 
