@@ -13,7 +13,7 @@ body{
 }
  
 .logo{
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     margin-bottom: 20px;
 }
 
@@ -126,6 +126,10 @@ body{
     min-height: 200px;
 }
 
+canvas{
+    width: 50% !important;
+    height: 50% !important;
+}
 
 #nav-footer{
     z-index:1; 
@@ -186,3 +190,4 @@ body{
         text-align: center;
     }
 }
+

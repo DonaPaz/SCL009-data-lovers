@@ -2,9 +2,10 @@ const calculate = document.getElementById("calculo")
 const order = document.querySelectorAll("button.ordered-by");
 const filter = document.querySelectorAll("button.type-poke");
 const container = document.getElementById("show-data");
-const btnSearch = document.getElementsByTagName("button")[0];
-
+const btnSearch = document.getElementsByTagName("button")[2];
+const btnChart = document.getElementsByTagName("button")[1];
 let modalImp = document.getElementById("modal");
+
 let btnType="";
 let btnWeak ="";
 
@@ -18,22 +19,27 @@ window.onload = () => {
 
   .then(function(data){
     const pokeData = data.pokemon;   
-    //console.log(pokeData);
+   // console.log("hola");
 
 
+    //MUESTRA CARDS INICIO
+    pokeData.forEach(element => {
+      container.innerHTML +=
+        `<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2" >
+          <div class="card  border-dark text-center rounded-lg mb-3"  >
+          <p class="card-text">${element.num}</p>
+          <img src="${element.img}" class="card-img-top" alt="...">
+          <h5 class="card-title">${element.name}</h5>
 
-   //FUNCION ACTIVDA
-   window.addEventListener('load', () =>{
-    addElement(pokeData);
-    console.log("hola");
-  });
-
+          <button type="button" id="info" class="btn btn-primary" data-toggle="modal" data-target="#modal${element.id}">Info</button>
+        </div>
+      </div>`
+    })
 
 
     // LISTENER PARA LLAMAR A LA FUNCION SORT 
     order.forEach(element => {
       element.addEventListener('click', () =>{ 
-        
         container.innerHTML="";
         modalImp.innerHTML="";
         calculate.innerHTML ="";
@@ -42,8 +48,8 @@ window.onload = () => {
         modal(cardSort);
         createButtonType(cardSort);
         createButtonWeak (cardSort);
-
       }) 
+
     }) 
 
 
@@ -67,7 +73,8 @@ window.onload = () => {
     //LISTENER PARA LLAMAR A FIND
     btnSearch.addEventListener('click', (e) => {
       e.preventDefault();
-      container.innerHTML="";
+      
+      document.getElementById('myChart').getContext('2d').innerHTML="";
       modalImp.innerHTML="";
       calculate.innerHTML ="";
       let pokeSearch = document.getElementsByTagName("input")[0].value;
@@ -89,57 +96,47 @@ window.onload = () => {
 
       modalImp.innerHTML +=
         `<div class="modal fade" id="modal${element.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                         <div class="modal-content">
-                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">${element.name} N°${element.num} </h5>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                              </button>
-                                   </div>
-                             <div class="modal-body">
-                                <div class="container-fluid">
-                                       <div class="row">  
-                                            <div class="col-sm-12">
-                                                <div class="row">
-                                                  <div class="col-7 col-sm-6">
-                                                      <img src="${element.img}"  alt="...">
-                                                  
-                                                         <h5 >Altura:</h5>
-                                                          <h5 >${element.height}</h5>
-                                                          <h5 >Peso:</h5>
-                                                          <h5 >${element.weight}</h5>
-                                                      </div>    
-                                                   
-                                                     <div class="col-3 col-sm-6">
-                                                        <h5 class="modal-title" >Tipo</h5>
-                                                 
-                                                          <div id="type${element.id}"  class="col-3 col-sm-6">
-                                                             <button  class=" btn btn-primary  ${element.type}" >${element.type}</button>
-                                                          </div>
-                                                      
-                                                       <h5 >Debilidad </h5>
-                                                       <br>
-                                                       <div id="weak${element.id}" > 
-                                                             <button  class=" btn btn-primary  ${element.weaknesses}" >${element.weaknesses}</button>
-                                                       </div>
-                                                         
-                                                      </div>
-                                                </div>
-                                               </div>         
-                                                 
-                                       </div>     
-                                 </div>
-                             </div>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">${element.name} N°${element.num} </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">  
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-7 col-sm-6">
+                          <img src="${element.img}"  alt="...">
+                            <h5 >Altura:</h5>
+                            <h5 >${element.height}</h5>
+                            <h5 >Peso:</h5>
+                            <h5 >${element.weight}</h5>
+                        </div>    
+                        <div class="col-3 col-sm-6">
+                          <h5 class="modal-title" >Tipo</h5>
+                          <div id="type${element.id}"  class="col-3 col-sm-6">
+                            <button  class=" btn btn-primary  ${element.type}" >${element.type}</button>
                           </div>
-                             <div class="modal-footer">
-                       
-                    
-                       </div>
-                     </div>
-                 </div>
-             </div>
-      `
+                          <h5 >Debilidad </h5>
+                          <br>
+                          <div id="weak${element.id}"> 
+                            <button  class=" btn btn-primary  ${element.weaknesses}" >${element.weaknesses}</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>         
+                  </div>     
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>`
     });
 
     function upperFirst(string){
@@ -261,9 +258,45 @@ window.onload = () => {
       })
     }
 
+
+   
+   btnChart.addEventListener('click', (e) => {
+      console.log("hola")//e.preventDefault();
+      container.innerHTML="";
+      calculate.innerHTML="";
+      let ctx = document.getElementById('myChart').getContext('2d');
+      
+      let myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+              labels: ['Planta', 'Tierra', 'Lucha', 'Bicho', 'Normal', 'Volador', 'Dragon', 'Psiquico', 'Hielo','Hada',
+              'Acero','Veneno','Fuego', 'Siniestro', 'Roca', 'Fantasma', 'Electrico', 'Agua'],
+              datasets: [{
+                  label: 'Pokemones Según Tipo',
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: [0, 10, 5, 2, 20, 30, 45]
+              }]
+          },
+      
+          // Configuration options go here
+          options: {}
+      });
+    
+    }),
+
+
+
+
     modal(pokeData); 
     createButtonType(pokeData);
     createButtonWeak (pokeData);
 
+
+
+
+    
   });
+ 
 }
+
